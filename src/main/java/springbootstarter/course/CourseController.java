@@ -18,17 +18,23 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping("/topics/{topicId}/courses")
-    public List<Course> courses(@PathVariable int topicId) {
+    public List<Course> getAllCourses(@PathVariable int topicId) {
         return courseService.getAllCourses(topicId); 
     }
 
     @RequestMapping("/topics/{topicId}/courses/{id}")
-    public Course course(@PathVariable int id) {
+    public Course getCourse(@PathVariable int id) {
         return courseService.getCourse(id);
     }
 
     @RequestMapping(method=RequestMethod.POST, value="/topics/{topicId}/courses")
-    public void addOrUpdateCourse(@RequestBody Course course, @PathVariable int topicId) {
+    public void addCourse(@RequestBody Course course, @PathVariable int topicId) {
+        course.setTopic(new Topic(topicId, ""));
+        courseService.addOrUpdateCourse(course);
+    }
+
+    @RequestMapping(method=RequestMethod.PUT, value="/topics/{topicId}/courses/{id}")
+    public void updateCourse(@RequestBody Course course, @PathVariable int topicId) {
         course.setTopic(new Topic(topicId, ""));
         courseService.addOrUpdateCourse(course);
     }
