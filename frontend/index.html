@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="courseSchedulerApp">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!--link rel="stylesheet" href="styles/main.css"-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <!-- endbuild -->
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">SmartSchool</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main">
+        <div ng-view=""></div>
+    </div>
+
+    <footer class="container">
+        <div class="row">
+            <p id="copyright" class="col-sm-4">&copy; 2018 Smart School</p>
+        </div>
+    </footer> 
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="scripts/src/app.js"></script>
+        <script src="scripts/src/controllers/MainCtrl.js"></script>
+        <script src="scripts/src/controllers/CoursesCtrl.js"></script>
+        <script src="scripts/src/controllers/LessonsCtrl.js"></script>
+        <script src="scripts/src/services/topicService.js"></script>
+        <script src="scripts/src/services/courseService.js"></script>
+        <script src="scripts/src/services/lessonService.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <div class="container">
+        <section class="jumbotron center">LESSON LIST</section>
+    </div>
+
+    <form name="lessonSearchForm" ng-submit="getLessons()">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select class="form-control" id="course" ng-model="selectedCourse" 
+                    ng-options="course.id as course.name for course in courseList">
+                    <option value="">Select Course</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="lessonTable">
+            <thead>
+                <tr>
+                    <th><a href="#" ng-click="sortType = 'Lesson'; sortReverse = !sortReverse">
+                            Lesson
+                            <span ng-show="sortType == 'Lesson' && sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'Lesson' && !sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th><a href="#" ng-click="sortType = 'Description'; sortReverse = !sortReverse">
+                            Description
+                            <span ng-show="sortType == 'Description' && sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'Description' && !sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lesson in lessons | orderBy:sortType:sortReverse">
+                    <td>{{ lesson.name }}</td>
+                    <td>{{ lesson.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</html>
